@@ -117,7 +117,7 @@ const Homepage = () => {
                                 </ul>
                             </div>
                             <div className='col'>
-                                <img src={whitelogoicon} alt="" />
+                                <img src={whitelogoicon} className='footer-image' alt="" />
                             </div>
                         </div>
                         <div className='icons-div'>
@@ -129,7 +129,8 @@ const Homepage = () => {
                                 <p><span><img src={linkedinIcon} alt="Linkedin" /></span></p>
                                 <p><span><img src={twitterIcon} alt="X" /></span></p>
                             </div>
-                    </div>
+                        </div>
+
                 </div>
             </footer>
         </div>
