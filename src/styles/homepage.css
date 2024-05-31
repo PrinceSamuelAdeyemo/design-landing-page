@@ -1,0 +1,309 @@
+@font-face {
+    font-family: 'GraphikBlack';
+    src: 
+        url('../assets/fonts/graphik/GraphikBlack.otf')
+        format('opentype');
+
+}
+
+@font-face {
+    font-family: 'GraphikBold';
+    src: 
+        url('../assets/fonts/graphik/GraphikBold.otf')
+        format('opentype');
+
+}
+
+@font-face {
+    font-family: 'GraphikMedium';
+    src: 
+        url('../assets/fonts/graphik/GraphikMedium.otf')
+        format('opentype');
+}
+
+@font-face {
+    font-family: 'GraphikRegular';
+    src: 
+        url('../assets/fonts/graphik/GraphikRegular.otf')
+        format('opentype');
+}
+@font-face {
+    font-family: 'GraphikLight';
+    src: 
+        url('../assets/fonts/graphik/GraphikLight.otf')
+        format('opentype');
+}
+
+@font-face {
+    font-family: 'GraphikSemibold';
+    src: 
+        url('../assets/fonts/graphik/GraphikSemibold.otf')
+        format('opentype');
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body, .container{
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.container::-webkit-scrollbar{
+    display: none;
+}
+
+.container .navbar{
+    display: flex;
+    width: 100%;
+    height: 0.3rem;
+    padding: 2.5rem 9rem 2.5rem 6.7rem;
+    position: fixed;
+    z-index: 2;
+    align-items: center;
+}
+
+.navbar #logoicon{
+    height: 2.5rem;
+}
+
+.navbar .navcontainer{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.navcontainer, .navcontainer > .navdiv{
+    list-style: none;
+    gap: 6rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.navcontainer .navdiv li{
+    font-family: GraphikRegular;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+
+.navbutton{
+    display: none;
+}
+
+#outcomes-nav{
+    display: none;
+}
+
+.section-content{
+    width: 65%;
+    height: 63%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    
+}
+
+.section-content img{
+    width: 13%;
+    
+}
+
+.section-content > p:last-of-type{
+    font-family: GraphikRegular;
+    font-size: 1.8rem;
+    color: grey;
+    opacity: 0.6;
+    width: 60%;
+}
+
+.section-content > p:last-of-type span{
+    color: #000000;
+    opacity: 1;
+}
+
+.section-content > p:first-of-type{
+    font-family: GraphikSemibold;
+    font-size: 5rem;
+    color: #000000;
+    opacity: 1;
+}
+
+
+
+.section{
+    flex: 0 0 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    scroll-snap-align: start;
+    padding-left: 8%;
+}
+
+#section1{
+    background: url("../assets/images/BG.svg");
+}
+
+#section2{
+    position: relative;
+}
+
+
+#section2::before{
+    position: absolute;
+    flex: 0 0 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    scroll-snap-align: start;
+    background: url("../assets/images/ploragrp.svg");
+    opacity: 0.15;
+    content: "";
+    z-index: -1;
+    
+}
+
+#uiux{
+    padding: 2rem;
+    border: 0.2rem solid #0078FF;
+    width: 25%;
+    border-radius: 3rem;
+    text-align: center;
+}
+
+.section .bottomrightimage{
+    position: absolute;
+    max-height: 70%;
+    bottom: 0;
+    right: 0;
+}
+
+#lastsection{
+    background-color: #141414;
+    justify-content: center;
+
+
+    flex: 0 0 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    scroll-snap-align: start;
+}
+
+#lastsection > div:first-of-type{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#lastsection .inner-footer{
+    width: 65%;
+    height: 50%;
+    color: #C8C8C8;
+    align-self: center;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+
+.inner-footer h1:first-of-type{
+    font-family: GraphikSemibold;
+    font-size: 7rem;
+    width: 50%;
+}
+
+.inner-footer .row{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: red;
+}
+
+.inner-footer .row .col{
+    width: 100%;
+}
+
+.col .skillset-title{
+    font-family: GraphicMedium;
+    font-size: 2rem;
+}
+
+.inner-footer .bottomrightimage{
+    position: absolute;
+}
+
+.col, ul{
+    list-style: none;
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.col li{
+    text-decoration: underline;
+    border-spacing: 10rem;
+}
+
+.icons-div{
+    display: flex;
+    flex-direction: row;
+    gap: 20rem;
+}
+
+.icons-div .main-icons{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+@media screen and (min-width: 0px) and (max-width:799px)
+{
+    .navcontainer{
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 50%;
+    }
+
+    .navbutton{
+        display: block;
+    }
+}
