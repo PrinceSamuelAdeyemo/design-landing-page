@@ -92,10 +92,12 @@ const Homepage = () => {
             </div>
 
             <footer id='lastsection'>
-                    <div className='inner-footer'>
-                        
+                <div className='inner-footer'>
+                    <div className='footer-header'>
                         <h1>Digital product design agency</h1>
-                        <div className='row'>
+                    </div>
+                    <div className='footer-content'>
+                        <div className='footer-text-row'>
                             <div className='col'>
                                 <h3 className='skillset-title'>Proficiency</h3>
                                 <ul>
@@ -116,20 +118,26 @@ const Homepage = () => {
                                     <li>GitHub</li>
                                 </ul>
                             </div>
+    {/* 
                             <div className='col'>
                                 <img src={whitelogoicon} className='footer-image' alt="" />
                             </div>
+                                */}
                         </div>
-                        <div className='icons-div'>
-                            <div className='copyright'>
-                                <p><span>&copy;</span> 2022, Aerxel HQ.</p>
-                            </div>
-                            <div className='main-icons'>
-                                <p><span><img src={instagramIcon} alt="Instagram" /></span></p>
-                                <p><span><img src={linkedinIcon} alt="Linkedin" /></span></p>
-                                <p><span><img src={twitterIcon} alt="X" /></span></p>
-                            </div>
+                        <div className='footer-whitelogo'>
+                            <img src={whitelogoicon} className='footer-image' alt="" />
                         </div>
+                    </div>
+                    <div className='footer-icons'>
+                        <div className='copyright'>
+                            <p><span>&copy;</span> 2022, Aerxel HQ.</p>
+                        </div>
+                        <div className='main-icons'>
+                            <p><span><img src={instagramIcon} alt="Instagram" /></span></p>
+                            <p><span><img src={linkedinIcon} alt="Linkedin" /></span></p>
+                            <p><span><img src={twitterIcon} alt="X" /></span></p>
+                        </div>
+                    </div>
 
                 </div>
             </footer>
