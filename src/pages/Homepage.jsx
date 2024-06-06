@@ -19,17 +19,10 @@ import twitterIcon from "../assets/icons/iconmonstr-twitter-4 (1) 1.svg"
 const Homepage = () => {
     const [nav_container, SetNav_container] = useState(false);
     const [last_screen, SetLast_screen] = useState(false);
+    const [screenSize, SetScreenSize] = useState()
 
     var navbutton_toggle = () => {
         (nav_container === true) ? (SetNav_container(false)) : (SetNav_container(true));
-    }
-
-    var navdiv_style = {
-        color: (last_screen === true) ? "#000000" : "#FFFFFFF",
-        backgroundColor: (last_screen === true) ? "#FFFFFFF" : "#000000",
-        display: (nav_container === true) ? "none" : "flex",
-        "flexDirection": "row",
-        flexDirection: "column",
     }
 
     var checkScreenPosition = () => {
@@ -41,14 +34,11 @@ const Homepage = () => {
         
         if (screen1.getBoundingClientRect().bottom >= 50){
             SetLast_screen(false);
-            //navdiv.style.color = "#000000";
             logo_icon.src = logoicon;
             outcomes_nav.style.display = "none";
         }
         else if (screen2.getBoundingClientRect().bottom >= 50){
             SetLast_screen(false);
-            //console.log(screen2.getBoundingClientRect().bottom)
-            //navdiv.style.color = "#000000";
             logo_icon.src = logoicon;
             outcomes_nav.style.display = "block"
         }
@@ -60,6 +50,35 @@ const Homepage = () => {
         }
 
     }
+
+    var navcontainer_style = {
+        display: (screenSize == "small" && nav_container === true) ? "none" : "flex",
+        //display: (nav_container === true) ? "flex" : "none",
+        //flexDirection: (window.screen.width > 799) ? "row" : "column",
+        
+    }
+
+    var navdiv_style = {
+        display: (screenSize == "small" && nav_container === true) ? "none" : "flex",
+        //display: (nav_container === true) ? "flex" : "none",
+        //display: (nav_container === true) ? "flex" : "none",
+        color: (last_screen === true) ? "#000000" : "#FFFFFF",
+        backgroundColor: (last_screen === true) ? "#FFFFFF" : "#000000",
+        //flexDirection: (window.screen.width > 799) ? "row" : "column",
+    }
+
+
+    useEffect(() => {
+        if (window.screen.width <= 800){
+            SetScreenSize("small")
+        }
+        else{
+            SetScreenSize("big")
+        }
+        
+    })
+
+    
 
   return (
     <HelmetProvider>
@@ -73,12 +92,25 @@ const Homepage = () => {
         <div className='container' onScroll={checkScreenPosition}>
             <nav className='navbar'>
                 <p><img className='logoicon' id='logoicon' src={logoicon} alt="" /></p>
-                <ul className='navcontainer'>
+                <ul className='navcontainer' style={navcontainer_style}>
                     <div className='navdiv' id='navdiv' style={navdiv_style}>
+                        <button className='closemenu'>X</button>
                         <li>Work</li>
                         <li>Agency</li>
                         <li id='outcomes-nav'>Outcomes</li>
                         <li>Contact</li>
+                        <div className='nameicon'>
+                            <div className='a'>
+                                <p>&copy; 2022, Aerxel HQ.</p>
+                            </div>
+                            <div>
+                            <div className='main-icons'>
+                                <p><span><img src={instagramIcon} alt="Instagram" /></span></p>
+                                <p><span><img src={linkedinIcon} alt="Linkedin" /></span></p>
+                                <p><span><img src={twitterIcon} alt="X" /></span></p>
+                        </div>
+                            </div>
+                        </div>
                     </div>
                 </ul>
                 <button className='fa fa-navicon navbutton' onClick={navbutton_toggle}></button>

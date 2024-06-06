@@ -90,6 +90,7 @@ body, .container{
 
 .navbar .navcontainer{
     display: flex;
+    flex-direction: row;
     justify-content: flex-end;
     align-items: center;
     width: 100%;
@@ -104,10 +105,18 @@ body, .container{
     flex-direction: row;
 }
 
+.navdiv .closemenu{
+    display: none;
+    align-self: flex-end;
+}
 .navcontainer .navdiv li{
     font-family: GraphikRegular;
     font-size: 1rem;
     font-weight: 400;
+}
+
+.navdiv .nameicon{
+    display: none;
 }
 
 
@@ -315,7 +324,7 @@ body, .container{
     gap: 20rem;
 }
 
-.footer-icons .main-icons{
+.main-icons{
     display: flex;
 }
 
@@ -385,26 +394,56 @@ body, .container{
     }
 
     .navbar .navcontainer{
-        display: flex;
+        display: none;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
 
     .navbar .navcontainer .navdiv{
-        display: none;
+        display: flex;
+        flex-wrap: wrap;
         position: absolute;
         flex-direction: column;
         z-index: 3;
-        background-color: whitesmoke;
-        min-width: 150%;
-        top: 100%;
-        align-items: center;
-        justify-content: center;
-        gap: 5rem;
-        padding: 2rem 0;
+        width: 100vw;
+        top: 0;
+        height: 80vh;
+        gap: 3rem;
     }
 
+    .navdiv .closemenu{
+        display: block;
+        align-self: flex-end;
+    }
+
+    .navcontainer .navdiv li{
+        font-family: GraphikBold;
+        font-size: 4rem;
+        font-weight: 700;
+    }
+
+    .navcontainer .navdiv > .nameicon{
+        display: flex;
+        flex-direction: row;
+        background-color: red;
+        width: 100vw;
+        height: 5%;
+        align-self:flex-end;
+        justify-self: flex-end;
+    }
+
+    .nameicon > .a{
+        font-weight: 900;
+        justify-self: flex-end;
+        background-color: green;
+    }
+    .nameicon > div:last-of-type{
+        background-color: blue;
+        justify-self:flex-end;
+        align-self: flex-end;
+    }
+    
     .navbar > p{
         
     }
@@ -413,4 +452,15 @@ body, .container{
         display: flex;
         font-size: 2rem;
     }
+
+    .section-content{
+        width: 65%;
+        height: 63%;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        
+    }
+    
+
 }
