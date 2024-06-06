@@ -1,9 +1,10 @@
-import React from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import { HelmetProvider, Helmet } from "react-helmet-async";
 
 import "../styles/homepage.css"
 
 // Importing images
+import "../assets/icons/fontawesome-icons/css/all.css";
 import logoicon from "../assets/icons/Axel.svg"
 import whitelogoicon from "../assets/images/WhiteAx.svg"
 import Axelblue from "../assets/images/Axelblue.svg"
@@ -16,10 +17,19 @@ import linkedinIcon from "../assets/icons/iconmonstr-linkedin-4 (1) 1.svg"
 import twitterIcon from "../assets/icons/iconmonstr-twitter-4 (1) 1.svg"
 
 const Homepage = () => {
+    const [nav_container, SetNav_container] = useState(false);
+    const [last_screen, SetLast_screen] = useState(false);
 
-    var getBottomPosition = () => {
-        var screen1 = document.getElementById("section1");
-        //console.log(screen1.getBoundingClientRect().height)
+    var navbutton_toggle = () => {
+        (nav_container === true) ? (SetNav_container(false)) : (SetNav_container(true));
+    }
+
+    var navdiv_style = {
+        color: (last_screen === true) ? "#000000" : "#FFFFFFF",
+        backgroundColor: (last_screen === true) ? "#FFFFFFF" : "#000000",
+        display: (nav_container === true) ? "none" : "flex",
+        "flexDirection": "row",
+        flexDirection: "column",
     }
 
     var checkScreenPosition = () => {
@@ -30,18 +40,21 @@ const Homepage = () => {
         var outcomes_nav = document.getElementById("outcomes-nav");
         
         if (screen1.getBoundingClientRect().bottom >= 50){
-            navdiv.style.color = "#000000";
+            SetLast_screen(false);
+            //navdiv.style.color = "#000000";
             logo_icon.src = logoicon;
             outcomes_nav.style.display = "none";
         }
         else if (screen2.getBoundingClientRect().bottom >= 50){
+            SetLast_screen(false);
             //console.log(screen2.getBoundingClientRect().bottom)
-            navdiv.style.color = "#000000";
+            //navdiv.style.color = "#000000";
             logo_icon.src = logoicon;
             outcomes_nav.style.display = "block"
         }
         else{
-            navdiv.style.color = "#FFFFFF";
+            SetLast_screen(true);
+            //navdiv.style.color = "#FFFFFF";
             logo_icon.src = whitelogoicon
             outcomes_nav.style.display = "block";
         }
@@ -61,14 +74,14 @@ const Homepage = () => {
             <nav className='navbar'>
                 <p><img className='logoicon' id='logoicon' src={logoicon} alt="" /></p>
                 <ul className='navcontainer'>
-                    <div className='navdiv' id='navdiv'>
+                    <div className='navdiv' id='navdiv' style={navdiv_style}>
                         <li>Work</li>
                         <li>Agency</li>
                         <li id='outcomes-nav'>Outcomes</li>
                         <li>Contact</li>
                     </div>
                 </ul>
-                <button className='navbutton'>Menu</button>
+                <button className='fa fa-navicon navbutton' onClick={navbutton_toggle}></button>
             </nav>
             <div className='section' id='section1'>
                 <div className='section-content'>
@@ -76,8 +89,7 @@ const Homepage = () => {
                     <p>We are a digital product design agency</p>
                     <p><span className='zilla-slab-'>Aerxel</span> is a team consisting of amazing people whose purpose is creating digital experiences and solutions for businesses.</p>
                 </div>
-                
-                <img src={Axelblue} alt="haha" className='bottomrightimage' />
+=                <img src={Axelblue} alt="haha" className='bottomrightimage' />
             </div>
 
             <div className='section' id='section2'>
