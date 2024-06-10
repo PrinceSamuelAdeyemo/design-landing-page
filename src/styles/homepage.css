@@ -78,6 +78,7 @@ body, .container{
     width: 100%;
     height: 4rem;
     /* padding: 2.5rem 9rem 2.5rem 6.7rem; */
+    padding: 3rem 6.7rem 4rem 4rem;
     position: fixed;
     z-index: 2;
     align-items: center;
@@ -86,6 +87,7 @@ body, .container{
 
 .navbar #logoicon{
     height: 2.5rem;
+    z-index: 50;
 }
 
 .navbar .navcontainer{
@@ -105,10 +107,6 @@ body, .container{
     flex-direction: row;
 }
 
-.navdiv .closemenu{
-    display: none;
-    align-self: flex-end;
-}
 .navcontainer .navdiv li{
     font-family: GraphikRegular;
     font-size: 1rem;
@@ -138,8 +136,7 @@ body, .container{
 }
 
 .section-content img{
-    width: 13%;
-    
+    width: 15%;
 }
 
 .section-content > p:last-of-type{
@@ -209,7 +206,8 @@ body, .container{
 #uiux{
     padding: 2rem;
     border: 0.2rem solid #0078FF;
-    width: 25%;
+    min-width: 30%;
+    max-width: 50%;
     border-radius: 3rem;
     text-align: center;
 }
@@ -221,6 +219,8 @@ body, .container{
     height: auto;
     bottom: 0;
     right: 0;
+    overflow: clip;
+    overflow-clip-margin: content-margin;
 }
 
 #lastsection{
@@ -381,16 +381,65 @@ body, .container{
     height: 50%;
 }
  */
-@media screen and (min-width: 0px) and (max-width:799px)
-{
+
+ @media screen and (min-width: 800px) and (max-width:1000px){
+    
+    .section-content{
+        width: 70%;
+        height: 63%;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        
+    }
+    
+    .section .bottomrightimage{
+        position: absolute;
+        max-height: 40%;
+        max-width: 100%;
+        height: auto;
+        bottom: 0;
+        right: 0;
+        overflow: clip;
+        overflow-clip-margin: content-margin;
+    }
+ }
+
+ @media screen and (min-width: 1000px) and (max-width:1024px){
+    .section-content{
+        width: 70%;
+        height: 63%;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        
+    }
+    
+    .section-content img{
+        width: 30%;
+    }
 
     
+    .section .bottomrightimage{
+        position: absolute;
+        max-height: 53%;
+        max-width: 100%;
+        height: auto;
+        bottom: 0;
+        right: 0;
+        overflow: clip;
+        overflow-clip-margin: content-margin;
+    }
+ }
+
+ @media screen and (min-width: 0px) and (max-width:999px)
+{
     .container .navbar{
         display: flex;
         width: 100%;
         position: fixed;
         z-index: 2;
-        padding: 0 4rem;        
+        padding: 0 0.5rem;        
     }
 
     .navbar .navcontainer{
@@ -401,66 +450,168 @@ body, .container{
     }
 
     .navbar .navcontainer .navdiv{
-        display: flex;
-        flex-wrap: wrap;
+        display: none;
+        /* flex-wrap: wrap; */
         position: absolute;
         flex-direction: column;
         z-index: 3;
         width: 100vw;
         top: 0;
-        height: 80vh;
-        gap: 3rem;
-    }
-
-    .navdiv .closemenu{
-        display: block;
-        align-self: flex-end;
+        min-height: 80vh;
+        max-height: 100vh;
+        gap: 2.7rem;
+        transition: top 10s ease-in-out;
+        padding: 7.3rem 0 0 1.5rem;
+        margin: 0;
     }
 
     .navcontainer .navdiv li{
-        font-family: GraphikBold;
-        font-size: 4rem;
-        font-weight: 700;
+        font-family: GraphikSemibold;
+        font-size: 3.5rem;
+        font-weight: 600;
     }
+
+    .navbar-toggle{
+        z-index: 1000;
+    }
+
+    .bar{
+        width: 2.5rem;
+        height: 0.2rem;
+        background-color: #000000;
+        margin: 0.5rem 0;
+        transform: rotate(180deg) translate(0, 0);
+        transition: transform 1s;
+    }
+
+    
+    .bar1{
+        width: 2.5rem;
+        height: 0.2rem;
+        background-color: #FFFFFF;
+        margin: 0.5rem 0;
+        transform: rotate(-45deg) translate(0, 0);
+        transition: 1s;
+    }
+
+    .bar2{
+        width: 2.5rem;
+        height: 0.2rem;
+        background-color: #FFFFFF;
+        margin: 0.5rem 0;
+        transform: rotate(45deg) translate(-8px, -10px);
+        transition: 1s;
+    } 
 
     .navcontainer .navdiv > .nameicon{
         display: flex;
         flex-direction: row;
-        background-color: red;
         width: 100vw;
         height: 5%;
-        align-self:flex-end;
-        justify-self: flex-end;
+        position: absolute;
+        bottom: 0;
+        gap: 5rem;
+        font-size: 1.2rem;
     }
 
     .nameicon > .a{
         font-weight: 900;
-        justify-self: flex-end;
-        background-color: green;
-    }
-    .nameicon > div:last-of-type{
-        background-color: blue;
-        justify-self:flex-end;
-        align-self: flex-end;
     }
     
-    .navbar > p{
-        
-    }
+/* 
+    
 
-    .navbar .navbutton{
+    .change{
         display: flex;
-        font-size: 2rem;
+        flex-direction: column;
+        align-self: flex-end;
+        margin-top: 1.5rem;
     }
 
+    .change .bar{
+        width: 2.5rem;
+        height: 0.2rem;
+        background-color: #FFFFFF;
+        margin: 0.3rem 0;
+        /* position: absolute;
+        z-index: 50000; *
+    }
+
+    .change .bar1{
+        transform: rotate(-45deg) translate(0, 0);
+        transition: 2s;
+    }
+
+    .change .bar2{
+        transform: rotate(45deg) translate(-8px, -10px);
+    } */
+
+    .section{
+        flex: 0 0 100%;
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        scroll-snap-align: start;
+    }
+
+    
     .section-content{
-        width: 65%;
+        min-width: 90%;
         height: 63%;
         display: flex;
         flex-direction: column;
         gap: 2rem;
-        
     }
     
+    .section-content img{
+        width: 30%;
+    }
+
+    .section-content > p:last-of-type{
+        font-family: GraphikRegular;
+        font-size: 90%;
+        color: grey;
+        opacity: 0.6;
+        width: 60%;
+    }
+    
+    .section-content > p:last-of-type span{
+        color: #000000;
+        opacity: 1;
+    }
+    
+    .section-content > p:first-of-type{
+        font-family: GraphikSemibold;
+        font-size: 350%;
+        height: auto;
+        width: auto;
+        color: #000000;
+        opacity: 1;
+    }
+
+    .section .bottomrightimage{
+        position: absolute;
+        max-height: 50%;
+        max-width: 100%;
+        height: auto;
+        bottom: 0;
+        right: 0;
+        overflow: clip;
+        overflow-clip-margin: content-margin;
+    }
+
+    .inner-footer .footer-header{
+        font-family: GraphikSemibold;
+        font-size: 100%;
+    }
+    
+    .footer-header h1{
+        font-size: 3rem;
+        min-width: 50%;
+        height: 1000%;
+    }
 
 }

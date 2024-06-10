@@ -20,9 +20,15 @@ const Homepage = () => {
     const [nav_container, SetNav_container] = useState(false);
     const [last_screen, SetLast_screen] = useState(false);
     const [screenSize, SetScreenSize] = useState()
+    const [twist, setTwist] = useState(false)
 
     var navbutton_toggle = () => {
-        (nav_container === true) ? (SetNav_container(false)) : (SetNav_container(true));
+        setTwist(!twist)
+        SetNav_container(!nav_container)
+        /* (nav_container === true) ? (SetNav_container(false)) : (SetNav_container(true));
+        var toggle_element = document.getElementById("navbar-toggle")
+        toggle_element.classList.toggle("change")
+ */
     }
 
     var checkScreenPosition = () => {
@@ -44,39 +50,68 @@ const Homepage = () => {
         }
         else{
             SetLast_screen(true);
+            if (screenSize == "small"){
+            }
             //navdiv.style.color = "#FFFFFF";
             logo_icon.src = whitelogoicon
             outcomes_nav.style.display = "block";
         }
-
     }
 
     var navcontainer_style = {
-        display: (screenSize == "small" && nav_container === true) ? "none" : "flex",
-        //display: (nav_container === true) ? "flex" : "none",
-        //flexDirection: (window.screen.width > 799) ? "row" : "column",
-        
+        display: (screenSize == "small" && last_screen === true) ? "none" : "flex",
     }
 
+    // If display is big and if it small.
     var navdiv_style = {
-        display: (screenSize == "small" && nav_container === true) ? "none" : "flex",
-        //display: (nav_container === true) ? "flex" : "none",
-        //display: (nav_container === true) ? "flex" : "none",
-        color: (last_screen === true) ? "#000000" : "#FFFFFF",
-        backgroundColor: (last_screen === true) ? "#FFFFFF" : "#000000",
-        //flexDirection: (window.screen.width > 799) ? "row" : "column",
-    }
+        display: (screenSize == "small" && nav_container === false) ? "none" : "flex",
+        color:  (screenSize == "small" && nav_container === true ? "#FFFFFF" : "#000000"),
+        backgroundColor: ( (screenSize === "small") ? "#000000" : "transparent"),
+        //color: "#FFFFFF",
+        //backgroundColor: "#000000",
+        /* 'color': ((last_screen, screenSize) => {
+            if ((last_screen == true && screenSize == "small") || (last_screen == false && screenSize == "big")){
+                return "#FFFFFF"; //black
+            }
+            else{
+                return "#FFFFFF"; //white
+            }
+        }), 
 
+        backgroundColor: ((last_screen, screenSize) => {
+            if ((last_screen == true && screenSize == "small") || (last_screen == false && screenSize == "big")){
+                return "#FFFFFF"; //white
+            }
+            else{
+                return "#000000"; //black
+            }
+        }), */
+    }
+    //console.log(navdiv_style.color)
+
+    /* var navdiv_style = {
+        display: (screenSize == "small" && nav_container === true) ? "none" : "flex",
+        color: last_screen === true && screenSize == "small" ? "#000000" : "#FFFFFF",
+        //backgroundColor: 
+        //color: (screenSize == "small" && last_screen === true) ? "#000000" : "#FFFFFF",
+        backgroundColor: (screenSize == "small" && last_screen === true) ? "#FFFFFF" : "#000000",
+    } */
+
+    
 
     useEffect(() => {
+        
         if (window.screen.width <= 800){
+            console.log("Should be small now");
             SetScreenSize("small")
         }
         else{
             SetScreenSize("big")
+            console.log("big")
+            SetNav_container(false)
         }
-        
-    })
+        //console.log(screenSize, last_screen)
+    }, [window.screen.width])
 
     
 
@@ -94,11 +129,12 @@ const Homepage = () => {
                 <p><img className='logoicon' id='logoicon' src={logoicon} alt="" /></p>
                 <ul className='navcontainer' style={navcontainer_style}>
                     <div className='navdiv' id='navdiv' style={navdiv_style}>
-                        <button className='closemenu'>X</button>
+                        
                         <li>Work</li>
                         <li>Agency</li>
                         <li id='outcomes-nav'>Outcomes</li>
                         <li>Contact</li>
+
                         <div className='nameicon'>
                             <div className='a'>
                                 <p>&copy; 2022, Aerxel HQ.</p>
@@ -108,12 +144,17 @@ const Homepage = () => {
                                 <p><span><img src={instagramIcon} alt="Instagram" /></span></p>
                                 <p><span><img src={linkedinIcon} alt="Linkedin" /></span></p>
                                 <p><span><img src={twitterIcon} alt="X" /></span></p>
-                        </div>
                             </div>
                         </div>
+                        </div>
+
                     </div>
                 </ul>
-                <button className='fa fa-navicon navbutton' onClick={navbutton_toggle}></button>
+                <div className='navbar-toggle' id='navbar-toggle' onClick={navbutton_toggle}>
+                    <div className={twist ? "bar1": "bar"}></div>
+                    <div className={twist ? "bar2": "bar"}></div>
+                </div>
+                {/* <button className='fa fa-navicon navbutton' onClick={navbutton_toggle}></button> */}
             </nav>
             <div className='section' id='section1'>
                 <div className='section-content'>
@@ -121,13 +162,15 @@ const Homepage = () => {
                     <p>We are a digital product design agency</p>
                     <p><span className='zilla-slab-'>Aerxel</span> is a team consisting of amazing people whose purpose is creating digital experiences and solutions for businesses.</p>
                 </div>
-=                <img src={Axelblue} alt="haha" className='bottomrightimage' />
+                <div style={{backgroundColor: "red"}}>
+                    <img src={Axelblue} alt="haha" className='bottomrightimage' />
+                </div>
             </div>
 
             <div className='section' id='section2'>
                 <div className='section-content'>
                     <img src={sect2txtimg} alt='ff'/>
-                    <p>Redefining E-banking</p>
+                    <p className='pfirst'>Redefining E-banking</p>
                     <div id='uiux'>
                         <p>UI/UX Design</p>
                     </div>
