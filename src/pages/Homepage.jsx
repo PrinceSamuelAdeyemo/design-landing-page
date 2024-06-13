@@ -102,12 +102,10 @@ const Homepage = () => {
     useEffect(() => {
         
         if (window.screen.width <= 800){
-            console.log("Should be small now");
             SetScreenSize("small")
         }
         else{
             SetScreenSize("big")
-            console.log("big")
             SetNav_container(false)
         }
         //console.log(screenSize, last_screen)
